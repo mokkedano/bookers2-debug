@@ -36,10 +36,37 @@
               <% end %>
             </td>
           <% end %>
-       <!--ここまで いいね機能-->
+       <!--いいね機能 ここまで-->
 
+       <!--コメント数-->
+           <td>コメント数：<%= @book.book_comments.count %></td>
         </tr>
       </table>
+
+      <!--コメント一覧-->
+      <table>
+        <% @book.book_comments.each do |book_comment| %>
+        <tr>
+          <td>
+            <%= image_tag book_comment.user.get_profile_image, size:"100x100" %><br>
+            <%= book_comment.user.name %>
+          </td>
+          <td><%= book_comment.comment %></td>
+        </tr>
+        <% end %>
+      </table>
+
+      <!--コメント投稿フォーム-->
+      <%= form_with model: [@book, @book_comment] do |f| %>
+        <div>
+          <%= f.text_area :comment, rows: '5', cols: '95' %>
+        </div>
+        <div>
+          <%= f.submit "送信" %>
+        </div>
+      <% end %>
+      <!--コメント機能 ここまで-->
+
     </div>
   </div>
 </div>

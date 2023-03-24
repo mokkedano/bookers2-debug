@@ -31,7 +31,11 @@
           <% end %>
         </td>
         <% end %>
-      <!--ここまで いいね機能-->
+      <!--いいね機能 ここまで-->
+
+      <!--コメント数-->
+        <td><%= link_to "コメント：#{book.book_comments.count}", book_path(book.id) %></td>
+      <!--コメント機能 ここまで-->
 
       </tr>
     <% end %>
