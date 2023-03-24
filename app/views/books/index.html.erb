@@ -11,19 +11,7 @@
       <h2>Books</h2>
       <%= render 'index', books: @books%>
 
-      <% if @book.id.favorited_by?(current_user) %>
-            <p>
-              <%= link_to book_favorites_path(@book.id), method: :delete do %>
-                ♥<%= @book.id.favorites.count %>
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to book_favorites_path(@book.id), method: :post do %>
-                ♡<%= @book.id.favorites.count %>
-              <% end %>
-            </p>
-          <% end %>
+      
     </div>
   </div>
 </div>
