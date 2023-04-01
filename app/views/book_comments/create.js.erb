@@ -1,0 +1,7 @@
+
+$('#comment_count_<%= @book.id %>').html("<%= j(render "book_comments/comment-count", book: @book) %>");
+
+$('#comment_index_<%= @book.id %>').html("<%= j(render "book_comments/comment-index", book: @book) %>");
+
+<!--$('#comment_field').val('');-->
+$('#comment_form').html("<%= j(render "book_comments/comment-form", book: @book, book_comment: @book_comment) %>");

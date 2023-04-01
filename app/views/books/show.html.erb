@@ -31,24 +31,26 @@
 
 
        <!--コメント数-->
-           <td>コメント数：<%= @book.book_comments.count %></td>
+          <td id="comment_count_<%= @book.id %>">
+            <%= render 'book_comments/comment-count', book: @book %>
+          </td>
         </tr>
       </table>
 
       <!--コメント一覧-->
-      <table>
+      <table id="comment_index_<%= @book.id %>">
         <%= render 'book_comments/comment-index', book: @book %>
       </table>
 
       <!--コメント投稿フォーム-->
-      <%= form_with model: [@book, @book_comment] do |f| %>
-        <div>
-          <%= f.text_area :comment, rows: '5', cols: '95' %>
-        </div>
-        <div>
-          <%= f.submit "送信", class: "btn btn-outline-info" %>
-        </div>
-      <% end %>
+      <div id= "comment_form">
+        <%= render partial: 'book_comments/comment-form', locals: { book: @book, book_comment: @book_comment } %>
+      </div>
+
+      <!--コメント機能 ここまで-->
+
+
+
       <!--コメント機能 ここまで-->
 
     </div>
