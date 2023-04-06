@@ -1,0 +1,23 @@
+
+<%= form_with model: group, local: true do |f| %>
+
+  <div>
+    <%= f.label :グループ名 %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div>
+    <%= f.label :紹介文 %>
+    <%= f.text_area :introduction %>
+  </div>
+  
+  <div>
+    <%= f.label :グループ画像 %>
+    <%= f.file_field :image_id %>
+  </div>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+  
+<% end %>

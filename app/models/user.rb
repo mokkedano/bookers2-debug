@@ -9,11 +9,18 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
 
 
+
+  has_many :group_users
+  has_many :group, through: :group_users
+
+
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
 
 
   has_one_attached :profile_image
@@ -40,8 +47,8 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
-  
+
+
 # 検索機能
   def self.looks(search, word)
     if search == "perfect_match"
@@ -52,10 +59,10 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?", "%#{word}")
     elsif search == "partial_match"
       @user = User.where("name LIKE?", "%#{word}%")
-    else 
+    else
       @user = User.all
     end
   end
-  
+
 
 end
