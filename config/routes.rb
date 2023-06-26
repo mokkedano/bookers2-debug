@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index,:show,:edit,:update] do
-    resource :relationships, only: [:create, :destroy]
     get "followings" => "relationships#followings", as: "followings"
     get "followers" => "relationships#followers", as: "followers"
+    resource :relationships, only: [:create, :destroy]
   end
 
   resources :groups do
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get "new/mail" => "groups#new_mail"
     get "send/mail" => "groups#send_mail"
   end
+  
+  resources :chats, only: [:show, :create]
 
 
 
