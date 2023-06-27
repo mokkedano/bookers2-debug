@@ -23,35 +23,38 @@
           <% end %>
 
 
-        <!--いいね機能-->
+          <!--いいね機能-->
           <td id="favorite_buttons_<%= @book.id %>">
             <%= render 'favorites/favorite-btn', book: @book %>
           </td>
          <!--いいね機能 ここまで-->
 
 
-       <!--コメント数-->
+         <!--コメント数-->
           <td id="comment_count_<%= @book.id %>">
             <%= render 'book_comments/comment-count', book: @book %>
           </td>
+          <!--コメント数 ここまで-->
+
+
+          <td>閲覧数：<%= @book_detail.view_counts.count %></td>
         </tr>
       </table>
+
 
       <!--コメント一覧-->
       <table id="comment_index_<%= @book.id %>">
         <%= render 'book_comments/comment-index', book: @book %>
       </table>
+      <!--コメント一覧 ここまで-->
+
 
       <!--コメント投稿フォーム-->
       <div id= "comment_form">
         <%= render partial: 'book_comments/comment-form', locals: { book: @book, book_comment: @book_comment } %>
       </div>
+      <!--コメント投稿フォーム ここまで-->
 
-      <!--コメント機能 ここまで-->
-
-
-
-      <!--コメント機能 ここまで-->
 
     </div>
   </div>
