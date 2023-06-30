@@ -10,4 +10,41 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
+
+  <!--星レビュー機能-->
+  
+  <!--<div class="form-group row id=star">-->
+    <%#= f.label :rate %>
+    <%#= f.hidden_field :rate, id: :review_star %>
+  <!--</div>-->
+
+  <!--<script>-->
+  <!--  $("#star").empty();-->
+  <!--  $("#star").raty({-->
+  <!--    size: 36,-->
+  <!--    starOff: "<%#= asset_path("star-off.png") %>",-->
+  <!--    starOn: "<%#= asset_path("star-on.png") %>",-->
+  <!--    scoreName: "book[star]",-->
+  <!--    half: false,-->
+  <!--  });-->
+  <!--</script>-->
+
+
+  <div id="post_raty"></div>
+  <script>
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+      $("#post_raty").empty();
+      $("#post_raty").raty({
+        size: 36,
+        starOff: "<%= asset_path("star-off.png") %>",
+        starOn: "<%= asset_path("star-on.png") %>",
+        scoreName: "book[star]",
+        half: false,
+      });
+     };
+    raty(elem,opt);
+  </script>
+
+
 <% end %>
